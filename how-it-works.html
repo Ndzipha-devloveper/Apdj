@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How It Works - Online Counseling Services</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Header - Consistent across all pages -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <span class="logo">CounselCare</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">HOME</a>
+                <a href="how-it-works.html" class="nav-link active">HOW IT WORKS</a>
+                <a href="contact.html" class="nav-link">CONTACT US</a>
+                <a href="about.html" class="nav-link">ABOUT US</a>
+                <a href="login.html" class="nav-link login-btn">Login</a>
+            </div>
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Page Header Section -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">How It Works</h1>
+            <p class="page-subtitle">Your journey to better mental health in simple steps</p>
+        </div>
+    </section>
+
+    <!-- Process Steps Section - Explains the counseling process -->
+    <section class="process-steps">
+        <div class="container">
+            <div class="steps-grid">
+                <!-- Step 1: Sign Up -->
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Create Your Account</h3>
+                        <p class="step-description">
+                            Sign up with your basic information and complete a brief assessment to help us understand your needs and preferences.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 2: Get Matched -->
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Get Matched</h3>
+                        <p class="step-description">
+                            Our algorithm matches you with licensed therapists based on your preferences, location, and specific therapeutic needs.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 3: Schedule Session -->
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Schedule Your Session</h3>
+                        <p class="step-description">
+                            Choose a time that works for you from your therapist's available slots. Sessions are available 7 days a week.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 4: Start Therapy -->
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Start Your Journey</h3>
+                        <p class="step-description">
+                            Join your secure video session from anywhere and begin working with your therapist to achieve your mental health goals.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section - What makes our service special -->
+    <section class="how-it-works-features">
+        <div class="container">
+            <h2 class="section-title">What Makes Us Different</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="3"></circle>
+                            <path d="M12 1v6m0 6v6"></path>
+                            <path d="m21 12-6 0m-6 0-6 0"></path>
+                        </svg>
+                    </div>
+                    <h3>24/7 Support</h3>
+                    <p>Round-the-clock technical support and crisis resources when you need them most.</p>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 12l2 2 4-4"></path>
+                            <path d="M21 12c-1 0-3-1-3-3s2-3 3-3 3 1 3 3-2 3-3 3"></path>
+                            <path d="M3 12c1 0 3-1 3-3s-2-3-3-3-3 1-3 3 2 3 3 3"></path>
+                        </svg>
+                    </div>
+                    <h3>Licensed Professionals</h3>
+                    <p>All our therapists are licensed, experienced professionals with specialized training.</p>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                            <circle cx="12" cy="16" r="1"></circle>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                        </svg>
+                    </div>
+                    <h3>HIPAA Compliant</h3>
+                    <p>Your privacy is protected with end-to-end encryption and HIPAA-compliant security measures.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call-to-Action Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Ready to Get Started?</h2>
+                <p class="cta-description">Take the first step towards better mental health today.</p>
+                <button class="cta-button" onclick="window.location.href='signup.html'">Begin Your Journey</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer - Consistent across all pages -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4 class="footer-title">About</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">Our Mission</a></li>
+                        <li><a href="about.html#careers">Careers</a></li>
+                        <li><a href="about.html#team">Our Team</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="#services">Individual Therapy</a></li>
+                        <li><a href="#services">Couples Counseling</a></li>
+                        <li><a href="#services">Group Sessions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Contact</h4>
+                    <ul class="footer-links">
+                        <li><a href="contact.html">Support</a></li>
+                        <li><a href="contact.html">Emergency</a></li>
+                        <li><a href="contact.html">Feedback</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">FAQ</h4>
+                    <ul class="footer-links">
+                        <li><a href="#faq">Getting Started</a></li>
+                        <li><a href="#faq">Privacy & Security</a></li>
+                        <li><a href="#faq">Billing</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 CounselCare. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chatbot Widget - Available on all pages -->
+    <div class="chatbot-container" id="chatbotContainer">
+        <button class="chatbot-toggle" id="chatbotToggle" onclick="toggleChatbot()">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+        </button>
+        <div class="chatbot-window" id="chatbotWindow">
+            <div class="chatbot-header">
+                <h4>CounselCare Assistant</h4>
+                <button class="chatbot-close" onclick="toggleChatbot()">×</button>
+            </div>
+            <div class="chatbot-messages" id="chatbotMessages">
+                <div class="chatbot-message bot-message">
+                    Hi there! How can I help you learn about our process?
+                </div>
+            </div>
+            <div class="chatbot-input">
+                <input type="text" id="chatbotInput" placeholder="Type your message..." onkeypress="handleChatInput(event)">
+                <button onclick="sendChatMessage()">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

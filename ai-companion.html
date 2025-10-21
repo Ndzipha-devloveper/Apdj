@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Companion - CounselCare</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <span class="logo">CounselCare</span>
+            </div>
+            <div class="nav-links">
+                <a href="dashboard.html" class="nav-link">DASHBOARD</a>
+                <a href="ai-companion.html" class="nav-link active">AI COMPANION</a>
+                <a href="mood-tracker.html" class="nav-link">MOOD TRACKER</a>
+                <a href="roadmap.html" class="nav-link">MY ROADMAP</a>
+                <a href="meeting.html" class="nav-link">SESSIONS</a>
+                <div class="user-menu">
+                    <button class="user-avatar" onclick="toggleUserMenu()">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- AI Companion Main Interface -->
+    <main class="ai-companion-main">
+        <div class="container">
+            <!-- AI Companion Header -->
+            <section class="ai-companion-header">
+                <div class="ai-companion-intro">
+                    <div class="ai-avatar-large">
+                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z"></path>
+                            <path d="M9 12l2 2 4-4"></path>
+                        </svg>
+                    </div>
+                    <div class="ai-intro-content">
+                        <h1>Meet Your AI Companion</h1>
+                        <p>I'm here to provide support, guidance, and resources between your therapy sessions. Think of me as your personal mental health assistant, available 24/7.</p>
+                        <div class="ai-capabilities">
+                            <span class="capability-tag">Emotional Support</span>
+                            <span class="capability-tag">Coping Strategies</span>
+                            <span class="capability-tag">Resource Recommendations</span>
+                            <span class="capability-tag">Crisis Detection</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="ai-status-panel">
+                    <div class="status-item">
+                        <span class="status-label">Status</span>
+                        <span class="status-value online">Online & Ready</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-label">Response Time</span>
+                        <span class="status-value">Instant</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-label">Conversations</span>
+                        <span class="status-value">47 this month</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Chat Interface -->
+            <section class="ai-chat-section">
+                <div class="chat-container">
+                    <div class="chat-messages" id="aiChatMessages">
+                        <!-- Welcome Message -->
+                        <div class="chat-message ai-message">
+                            <div class="message-avatar">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z"></path>
+                                    <path d="M9 12l2 2 4-4"></path>
+                                </svg>
+                            </div>
+                            <div class="message-content">
+                                <div class="message-text">
+                                    Hello Sarah! I'm your AI companion, and I'm here to support you between therapy sessions. I've been learning about your progress and I'm excited to help you continue your mental health journey. How are you feeling today?
+                                </div>
+                                <div class="message-time">Just now</div>
+                            </div>
+                        </div>
+
+                        <!-- Suggested Responses -->
+                        <div class="suggested-responses">
+                            <button class="suggestion-btn" onclick="sendSuggestedMessage('I\'m feeling anxious about work')">
+                                I'm feeling anxious about work
+                            </button>
+                            <button class="suggestion-btn" onclick="sendSuggestedMessage('I want to practice coping strategies')">
+                                I want to practice coping strategies
+                            </button>
+                            <button class="suggestion-btn" onclick="sendSuggestedMessage('Can you help me reflect on my progress?')">
+                                Can you help me reflect on my progress?
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Chat Input -->
+                    <div class="chat-input-container">
+                        <div class="chat-input-wrapper">
+                            <textarea 
+                                id="aiChatInput" 
+                                placeholder="Share what's on your mind... I'm here to listen and help."
+                                onkeypress="handleAIChatKeyPress(event)"
+                                rows="1"
+                            ></textarea>
+                            <button class="send-message-btn" onclick="sendAIMessage()">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                                    <polygon points="22,2 15,22 11,13 2,9 22,2"></polygon>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="chat-features">
+                            <button class="feature-btn" onclick="requestMoodCheck()" title="Quick Mood Check">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+                                    <line x1="9" y1="9" x2="9.01" y2="9"></line>
+                                    <line x1="15" y1="9" x2="15.01" y2="9"></line>
+                                </svg>
+                                Mood Check
+                            </button>
+                            <button class="feature-btn" onclick="requestCopingStrategies()" title="Coping Strategies">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                    <polyline points="22,4 12,14.01 9,11.01"></polyline>
+                                </svg>
+                                Coping Tools
+                            </button>
+                            <button class="feature-btn" onclick="requestResources()" title="Resources">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                    <polyline points="14,2 14,8 20,8"></polyline>
+                                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                                    <polyline points="10,9 9,9 8,9"></polyline>
+                                </svg>
+                                Resources
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI Insights Panel -->
+                <div class="ai-insights-panel">
+                    <h3>AI Insights</h3>
+                    <div class="insights-list">
+                        <div class="insight-item">
+                            <div class="insight-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M9 11H1v3h8v3l8-5-8-5v3z"></path>
+                                </svg>
+                            </div>
+                            <div class="insight-content">
+                                <h4>Pattern Recognition</h4>
+                                <p>I've noticed you tend to feel more anxious on Monday mornings. Would you like to explore some pre-week preparation strategies?</p>
+                            </div>
+                        </div>
+                        <div class="insight-item">
+                            <div class="insight-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                    <polyline points="22,4 12,14.01 9,11.01"></polyline>
+                                </svg>
+                            </div>
+                            <div class="insight-content">
+                                <h4>Progress Highlight</h4>
+                                <p>Your mood tracking shows a 23% improvement in overall wellbeing over the past month. Great work!</p>
+                            </div>
+                        </div>
+                        <div class="insight-item">
+                            <div class="insight-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                                </svg>
+                            </div>
+                            <div class="insight-content">
+                                <h4>Recommendation</h4>
+                                <p>Based on your recent conversations, I recommend trying the "5-4-3-2-1 grounding technique" for managing anxiety.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quick Actions -->
+            <section class="quick-actions-section">
+                <h3>Quick Actions</h3>
+                <div class="quick-actions-grid">
+                    <button class="quick-action-card" onclick="startGuidedMeditation()">
+                        <div class="action-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z"></path>
+                            </svg>
+                        </div>
+                        <h4>Guided Meditation</h4>
+                        <p>5-minute mindfulness session</p>
+                    </button>
+                    <button class="quick-action-card" onclick="openJournalPrompt()">
+                        <div class="action-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14,2 14,8 20,8"></polyline>
+                                <line x1="16" y1="13" x2="8" y2="13"></line>
+                                <line x1="16" y1="17" x2="8" y2="17"></line>
+                            </svg>
+                        </div>
+                        <h4>Journal Prompt</h4>
+                        <p>Reflect on your thoughts</p>
+                    </button>
+                    <button class="quick-action-card" onclick="startBreathingExercise()">
+                        <div class="action-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9 11H1v3h8v3l8-5-8-5v3z"></path>
+                            </svg>
+                        </div>
+                        <h4>Breathing Exercise</h4>
+                        <p>Calm your mind and body</p>
+                    </button>
+                    <button class="quick-action-card" onclick="scheduleTherapySession()">
+                        <div class="action-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                <line x1="16" y1="2" x2="16" y2="6"></line>
+                                <line x1="8" y1="2" x2="8" y2="6"></line>
+                                <line x1="3" y1="10" x2="21" y2="10"></line>
+                            </svg>
+                        </div>
+                        <h4>Schedule Session</h4>
+                        <p>Book with your therapist</p>
+                    </button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Crisis Alert Modal -->
+    <div class="modal-overlay" id="crisisAlertModal">
+        <div class="modal-content crisis-modal">
+            <div class="modal-header crisis-header">
+                <h3>🚨 Crisis Support Available</h3>
+            </div>
+            <div class="modal-body">
+                <p>I've detected that you might be going through a difficult time. Your safety and wellbeing are my top priority.</p>
+                <div class="crisis-options">
+                    <button class="crisis-btn emergency" onclick="callEmergency()">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                        </svg>
+                        Call Crisis Hotline
+                    </button>
+                    <button class="crisis-btn therapist" onclick="contactTherapist()">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                        Contact My Therapist
+                    </button>
+                    <button class="crisis-btn resources" onclick="viewCrisisResources()">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14,2 14,8 20,8"></polyline>
+                        </svg>
+                        Crisis Resources
+                    </button>
+                </div>
+                <p class="crisis-note">Remember: You are not alone, and help is always available.</p>
+            </div>
+            <div class="modal-actions">
+                <button class="modal-btn secondary" onclick="closeCrisisAlert()">I'm Safe</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="ai-companion.js"></script>
+</body>
+</html>

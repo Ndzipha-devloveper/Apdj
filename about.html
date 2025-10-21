@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Online Counseling Services</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <span class="logo">CounselCare</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">HOME</a>
+                <a href="how-it-works.html" class="nav-link">HOW IT WORKS</a>
+                <a href="contact.html" class="nav-link">CONTACT US</a>
+                <a href="about.html" class="nav-link active">ABOUT US</a>
+                <a href="login.html" class="nav-link login-btn">Login</a>
+            </div>
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Page Header Section -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">About CounselCare</h1>
+            <p class="page-subtitle">Transforming mental health care through accessible, professional therapy</p>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="mission-section">
+        <div class="container">
+            <div class="mission-content">
+                <div class="mission-text">
+                    <h2 class="section-title">Our Mission</h2>
+                    <p class="mission-description">
+                        At CounselCare, we believe that everyone deserves access to quality mental health support. 
+                        Our platform connects individuals with licensed therapists through secure, convenient online sessions, 
+                        breaking down barriers to mental health care and making therapy accessible to all.
+                    </p>
+                    <p class="mission-description">
+                        We're committed to providing a safe, supportive environment where you can work on your mental health 
+                        from the comfort and privacy of your own space, on your own schedule.
+                    </p>
+                </div>
+                <div class="mission-stats">
+                    <!-- Statistics showcasing company impact -->
+                    <div class="stat-item">
+                        <div class="stat-number">10,000+</div>
+                        <div class="stat-label">Happy Clients</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">500+</div>
+                        <div class="stat-label">Licensed Therapists</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">95%</div>
+                        <div class="stat-label">Client Satisfaction</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section" id="team">
+        <div class="container">
+            <h2 class="section-title">Meet Our Leadership Team</h2>
+            <div class="team-grid">
+                <!-- Team Member 1 -->
+                <div class="team-member">
+                    <div class="member-photo">
+                        <img src="https://images.pexels.com/photos/3777931/pexels-photo-3777931.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop&crop=face" alt="Dr. Sarah Johnson">
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Dr. Sarah Johnson</h3>
+                        <p class="member-role">Founder & Clinical Director</p>
+                        <p class="member-bio">
+                            PhD in Clinical Psychology with 15+ years of experience in mental health care and telehealth innovation.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Team Member 2 -->
+                <div class="team-member">
+                    <div class="member-photo">
+                        <img src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop&crop=face" alt="Michael Chen">
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Michael Chen</h3>
+                        <p class="member-role">Chief Technology Officer</p>
+                        <p class="member-bio">
+                            Expert in healthcare technology and privacy, ensuring our platform meets the highest security standards.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Team Member 3 -->
+                <div class="team-member">
+                    <div class="member-photo">
+                        <img src="https://images.pexels.com/photos/3760263/pexels-photo-3760263.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop&crop=face" alt="Dr. Maria Rodriguez">
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Dr. Maria Rodriguez</h3>
+                        <p class="member-role">Head of Clinical Operations</p>
+                        <p class="member-bio">
+                            Licensed therapist specializing in trauma and anxiety, overseeing our therapist matching system.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Team Member 4 -->
+                <div class="team-member">
+                    <div class="member-photo">
+                        <img src="https://images.pexels.com/photos/1674752/pexels-photo-1674752.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop&crop=face" alt="David Kim">
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">David Kim</h3>
+                        <p class="member-role">Head of Client Experience</p>
+                        <p class="member-bio">
+                            Dedicated to ensuring every client has a positive, supportive experience throughout their therapy journey.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values-section">
+        <div class="container">
+            <h2 class="section-title">Our Core Values</h2>
+            <div class="values-grid">
+                <!-- Value 1: Accessibility -->
+                <div class="value-item">
+                    <div class="value-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="value-title">Accessibility</h3>
+                    <p class="value-description">
+                        Mental health care should be available to everyone, regardless of location, schedule, or mobility constraints.
+                    </p>
+                </div>
+
+                <!-- Value 2: Privacy -->
+                <div class="value-item">
+                    <div class="value-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                            <circle cx="12" cy="16" r="1"></circle>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                        </svg>
+                    </div>
+                    <h3 class="value-title">Privacy & Security</h3>
+                    <p class="value-description">
+                        Your personal information and therapy sessions are protected with the highest security standards.
+                    </p>
+                </div>
+
+                <!-- Value 3: Quality -->
+                <div class="value-item">
+                    <div class="value-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon>
+                        </svg>
+                    </div>
+                    <h3 class="value-title">Quality Care</h3>
+                    <p class="value-description">
+                        We maintain the highest standards by working only with licensed, experienced mental health professionals.
+                    </p>
+                </div>
+
+                <!-- Value 4: Compassion -->
+                <div class="value-item">
+                    <div class="value-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="value-title">Compassion</h3>
+                    <p class="value-description">
+                        We approach every interaction with empathy, understanding, and genuine care for your wellbeing.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Careers Section -->
+    <section class="careers-section" id="careers">
+        <div class="container">
+            <div class="careers-content">
+                <h2 class="section-title">Join Our Team</h2>
+                <p class="careers-description">
+                    Ready to make a difference in mental health care? We're always looking for passionate professionals 
+                    to join our mission of making therapy accessible to everyone.
+                </p>
+                <div class="careers-benefits">
+                    <div class="benefit-item">
+                        <h4>Licensed Therapists</h4>
+                        <p>Flexible scheduling, competitive compensation, and comprehensive support.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <h4>Technology Professionals</h4>
+                        <p>Work on meaningful technology that improves mental health outcomes.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <h4>Support Staff</h4>
+                        <p>Help us provide exceptional client experience and operational excellence.</p>
+                    </div>
+                </div>
+                <button class="cta-button" onclick="window.location.href='contact.html'">
+                    View Open Positions
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4 class="footer-title">About</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">Our Mission</a></li>
+                        <li><a href="about.html#careers">Careers</a></li>
+                        <li><a href="about.html#team">Our Team</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="#services">Individual Therapy</a></li>
+                        <li><a href="#services">Couples Counseling</a></li>
+                        <li><a href="#services">Group Sessions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Contact</h4>
+                    <ul class="footer-links">
+                        <li><a href="contact.html">Support</a></li>
+                        <li><a href="contact.html">Emergency</a></li>
+                        <li><a href="contact.html">Feedback</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">FAQ</h4>
+                    <ul class="footer-links">
+                        <li><a href="#faq">Getting Started</a></li>
+                        <li><a href="#faq">Privacy & Security</a></li>
+                        <li><a href="#faq">Billing</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 CounselCare. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chatbot Widget -->
+    <div class="chatbot-container" id="chatbotContainer">
+        <button class="chatbot-toggle" id="chatbotToggle" onclick="toggleChatbot()">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+        </button>
+        <div class="chatbot-window" id="chatbotWindow">
+            <div class="chatbot-header">
+                <h4>CounselCare Assistant</h4>
+                <button class="chatbot-close" onclick="toggleChatbot()">×</button>
+            </div>
+            <div class="chatbot-messages" id="chatbotMessages">
+                <div class="chatbot-message bot-message">
+                    Hi! I can tell you more about our team and mission. What would you like to know?
+                </div>
+            </div>
+            <div class="chatbot-input">
+                <input type="text" id="chatbotInput" placeholder="Type your message..." onkeypress="handleChatInput(event)">
+                <button onclick="sendChatMessage()">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Online Counseling Services</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <span class="logo">CounselCare</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">HOME</a>
+                <a href="how-it-works.html" class="nav-link">HOW IT WORKS</a>
+                <a href="contact.html" class="nav-link">CONTACT US</a>
+                <a href="about.html" class="nav-link">ABOUT US</a>
+                <a href="login.html" class="nav-link login-btn">Login</a>
+            </div>
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Signup Section -->
+    <section class="signup-section">
+        <div class="signup-container">
+            <div class="signup-content">
+                <!-- Progress Indicator -->
+                <div class="signup-progress">
+                    <div class="progress-steps">
+                        <div class="progress-step active" data-step="1">
+                            <span class="step-number">1</span>
+                            <span class="step-label">Account</span>
+                        </div>
+                        <div class="progress-step" data-step="2">
+                            <span class="step-number">2</span>
+                            <span class="step-label">Assessment</span>
+                        </div>
+                        <div class="progress-step" data-step="3">
+                            <span class="step-number">3</span>
+                            <span class="step-label">Matching</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 1: Account Creation -->
+                <div class="signup-step active" id="step1">
+                    <div class="step-header">
+                        <h1 class="signup-title">Create Your Account</h1>
+                        <p class="signup-subtitle">Start your journey to better mental health</p>
+                    </div>
+
+                    <form class="signup-form" id="signupForm" onsubmit="handleSignupStep1(event)">
+                        <!-- Personal Information -->
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name *</label>
+                                <input type="text" id="firstName" name="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name *</label>
+                                <input type="text" id="lastName" name="lastName" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="signupEmail">Email Address *</label>
+                            <input type="email" id="signupEmail" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="signupPassword">Create Password *</label>
+                            <div class="password-input">
+                                <input type="password" id="signupPassword" name="password" required minlength="8">
+                                <button type="button" class="password-toggle" onclick="togglePassword('signupPassword')">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                        <circle cx="12" cy="12" r="3"></circle>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="password-requirements">
+                                <small>Password must be at least 8 characters long</small>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirm Password *</label>
+                            <input type="password" id="confirmPassword" name="confirmPassword" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="dateOfBirth">Date of Birth *</label>
+                            <input type="date" id="dateOfBirth" name="dateOfBirth" required>
+                        </div>
+
+                        <!-- Terms and Privacy Agreement -->
+                        <div class="form-group checkbox-group">
+                            <label class="checkbox-container">
+                                <input type="checkbox" id="agreeTerms" name="agreeTerms" required>
+                                <span class="checkmark"></span>
+                                I agree to the <a href="#terms" target="_blank">Terms of Service</a> and <a href="#privacy" target="_blank">Privacy Policy</a>
+                            </label>
+                        </div>
+
+                        <div class="form-group checkbox-group">
+                            <label class="checkbox-container">
+                                <input type="checkbox" id="emailUpdates" name="emailUpdates">
+                                <span class="checkmark"></span>
+                                I'd like to receive helpful mental health tips and updates
+                            </label>
+                        </div>
+
+                        <button type="submit" class="continue-button">Continue</button>
+                    </form>
+
+                    <div class="login-link">
+                        <p>Already have an account? <a href="login.html">Sign in here</a></p>
+                    </div>
+                </div>
+
+                <!-- Step 2: Initial Assessment -->
+                <div class="signup-step" id="step2">
+                    <div class="step-header">
+                        <h1 class="signup-title">Tell Us About Yourself</h1>
+                        <p class="signup-subtitle">This helps us match you with the right therapist</p>
+                    </div>
+
+                    <form class="assessment-form" onsubmit="handleSignupStep2(event)">
+                        <!-- Primary Concerns -->
+                        <div class="form-group">
+                            <label>What brings you to therapy today? (Select all that apply)</label>
+                            <div class="checkbox-grid">
+                                <label class="checkbox-container">
+                                    <input type="checkbox" name="concerns" value="anxiety">
+                                    <span class="checkmark"></span>
+                                    Anxiety
+                                </label>
+                                <label class="checkbox-container">
+                                    <input type="checkbox" name="concerns" value="depression">
+                                    <span class="checkmark"></span>
+                                    Depression
+                                </label>
+                                <label class="checkbox-container">
+                                    <input type="checkbox" name="concerns" value="stress">
+                                    <span class="checkmark"></span>
+                                    Stress Management
+                                </label>
+                                <label class="checkbox-container">
+                                    <input type="checkbox" name="concerns" value="relationships">
+                                    <span class="checkmark"></span>
+                                    Relationship Issues
+                                </label>
+                                <label class="checkbox-container">
+                                    <input type="checkbox" name="concerns" value="trauma">
+                                    <span class="checkmark"></span>
+                                    Trauma/PTSD
+                                </label>
+                                <label class="checkbox-container">
+                                    <input type="checkbox" name="concerns" value="grief">
+                                    <span class="checkmark"></span>
+                                    Grief & Loss
+                                </label>
+                                <label class="checkbox-container">
+                                    <input type="checkbox" name="concerns" value="selfesteem">
+                                    <span class="checkmark"></span>
+                                    Self-Esteem
+                                </label>
+                                <label class="checkbox-container">
+                                    <input type="checkbox" name="concerns" value="other">
+                                    <span class="checkmark"></span>
+                                    Other
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Therapy Experience -->
+                        <div class="form-group">
+                            <label for="therapyExperience">Have you been in therapy before?</label>
+                            <select id="therapyExperience" name="therapyExperience" required>
+                                <option value="">Please select</option>
+                                <option value="never">No, this is my first time</option>
+                                <option value="past">Yes, in the past</option>
+                                <option value="currently">Yes, I'm currently in therapy</option>
+                            </select>
+                        </div>
+
+                        <!-- Therapist Preferences -->
+                        <div class="form-group">
+                            <label for="genderPreference">Do you have a gender preference for your therapist?</label>
+                            <select id="genderPreference" name="genderPreference">
+                                <option value="no-preference">No preference</option>
+                                <option value="female">Female</option>
+                                <option value="male">Male</option>
+                                <option value="non-binary">Non-binary</option>
+                            </select>
+                        </div>
+
+                        <!-- Session Preferences -->
+                        <div class="form-group">
+                            <label for="sessionFrequency">How often would you like to have sessions?</label>
+                            <select id="sessionFrequency" name="sessionFrequency" required>
+                                <option value="">Please select</option>
+                                <option value="weekly">Weekly</option>
+                                <option value="biweekly">Every two weeks</option>
+                                <option value="monthly">Monthly</option>
+                                <option value="as-needed">As needed</option>
+                            </select>
+                        </div>
+
+                        <div class="form-buttons">
+                            <button type="button" class="back-button" onclick="goToStep(1)">Back</button>
+                            <button type="submit" class="continue-button">Continue</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Step 3: Therapist Matching -->
+                <div class="signup-step" id="step3">
+                    <div class="step-header">
+                        <h1 class="signup-title">Finding Your Perfect Match</h1>
+                        <p class="signup-subtitle">We're matching you with the best therapist for your needs</p>
+                    </div>
+
+                    <div class="matching-process">
+                        <div class="matching-animation">
+                            <div class="loading-spinner"></div>
+                            <p class="matching-text">Analyzing your preferences...</p>
+                        </div>
+
+                        <div class="matching-results" id="matchingResults" style="display: none;">
+                            <div class="match-success">
+                                <div class="success-icon">✓</div>
+                                <h3>Great News! We Found Your Match</h3>
+                                <p>Based on your preferences, we've matched you with a licensed therapist who specializes in your areas of concern.</p>
+                            </div>
+
+                            <div class="next-steps">
+                                <h4>What's Next?</h4>
+                                <ul>
+                                    <li>You'll receive an email with your therapist's information</li>
+                                    <li>Schedule your first session at a time that works for you</li>
+                                    <li>Begin your journey to better mental health</li>
+                                </ul>
+                            </div>
+
+                            <div class="form-buttons">
+                                <button type="button" class="back-button" onclick="goToStep(2)">Back</button>
+                                <button class="continue-button" onclick="window.location.href='meeting.html'">
+                                    Schedule First Session
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer minimal">
+        <div class="container">
+            <div class="footer-content minimal">
+                <div class="footer-links-minimal">
+                    <a href="about.html">About</a>
+                    <a href="contact.html">Support</a>
+                    <a href="#privacy">Privacy Policy</a>
+                    <a href="#terms">Terms of Service</a>
+                </div>
+                <p>&copy; 2025 CounselCare. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - CounselCare</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <span class="logo">CounselCare</span>
+            </div>
+            <div class="nav-links">
+                <a href="dashboard.html" class="nav-link active">DASHBOARD</a>
+                <a href="ai-companion.html" class="nav-link">AI COMPANION</a>
+                <a href="mood-tracker.html" class="nav-link">MOOD TRACKER</a>
+                <a href="roadmap.html" class="nav-link">MY ROADMAP</a>
+                <a href="meeting.html" class="nav-link">SESSIONS</a>
+                <div class="user-menu">
+                    <button class="user-avatar" onclick="toggleUserMenu()">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </button>
+                    <div class="user-dropdown" id="userDropdown">
+                        <a href="#profile">Profile Settings</a>
+                        <a href="index.html">Logout</a>
+                    </div>
+                </div>
+            </div>
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Dashboard Main Content -->
+    <main class="dashboard-main">
+        <div class="container">
+            <!-- Welcome Section -->
+            <section class="welcome-section">
+                <div class="welcome-content">
+                    <h1 class="welcome-title">Welcome back, Sarah!</h1>
+                    <p class="welcome-subtitle">Here's your mental health overview for today</p>
+                </div>
+                <div class="quick-actions">
+                    <button class="quick-action-btn" onclick="startMoodCheck()">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+                            <line x1="9" y1="9" x2="9.01" y2="9"></line>
+                            <line x1="15" y1="9" x2="15.01" y2="9"></line>
+                        </svg>
+                        Quick Mood Check
+                    </button>
+                    <button class="quick-action-btn" onclick="window.location.href='meeting.html'">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="23 7 16 12 23 17 23 7"></polygon>
+                            <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+                        </svg>
+                        Start Session
+                    </button>
+                </div>
+            </section>
+
+            <!-- Dashboard Grid -->
+            <div class="dashboard-grid">
+                <!-- Today's Overview Card -->
+                <div class="dashboard-card overview-card">
+                    <div class="card-header">
+                        <h3>Today's Overview</h3>
+                        <span class="date-badge" id="currentDate"></span>
+                    </div>
+                    <div class="overview-stats">
+                        <div class="stat-item">
+                            <div class="stat-icon mood-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+                                    <line x1="9" y1="9" x2="9.01" y2="9"></line>
+                                    <line x1="15" y1="9" x2="15.01" y2="9"></line>
+                                </svg>
+                            </div>
+                            <div class="stat-content">
+                                <span class="stat-value">Good</span>
+                                <span class="stat-label">Current Mood</span>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-icon streak-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"></path>
+                                </svg>
+                            </div>
+                            <div class="stat-content">
+                                <span class="stat-value">7 days</span>
+                                <span class="stat-label">Check-in Streak</span>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-icon progress-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                    <polyline points="22,4 12,14.01 9,11.01"></polyline>
+                                </svg>
+                            </div>
+                            <div class="stat-content">
+                                <span class="stat-value">68%</span>
+                                <span class="stat-label">Goal Progress</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI Companion Card -->
+                <div class="dashboard-card ai-companion-card">
+                    <div class="card-header">
+                        <h3>AI Companion</h3>
+                        <div class="ai-status online">
+                            <span class="status-dot"></span>
+                            <span>Available</span>
+                        </div>
+                    </div>
+                    <div class="ai-companion-content">
+                        <div class="ai-avatar">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z"></path>
+                                <path d="M9 12l2 2 4-4"></path>
+                            </svg>
+                        </div>
+                        <div class="ai-message">
+                            <p>"I noticed you've been consistent with your mood tracking. Would you like to explore some coping strategies for managing stress?"</p>
+                        </div>
+                        <button class="chat-with-ai-btn" onclick="window.location.href='ai-companion.html'">
+                            Chat with AI Companion
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Mood Trend Card -->
+                <div class="dashboard-card mood-trend-card">
+                    <div class="card-header">
+                        <h3>Mood Trends</h3>
+                        <select class="time-filter" onchange="updateMoodChart(this.value)">
+                            <option value="week">This Week</option>
+                            <option value="month">This Month</option>
+                            <option value="quarter">3 Months</option>
+                        </select>
+                    </div>
+                    <div class="mood-chart-container">
+                        <canvas id="moodChart" width="300" height="150"></canvas>
+                    </div>
+                    <div class="mood-insights">
+                        <div class="insight-item">
+                            <span class="insight-icon positive">↗</span>
+                            <span>Mood improving over the past week</span>
+                        </div>
+                        <div class="insight-item">
+                            <span class="insight-icon neutral">→</span>
+                            <span>Stress levels remain stable</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Upcoming Sessions Card -->
+                <div class="dashboard-card sessions-card">
+                    <div class="card-header">
+                        <h3>Upcoming Sessions</h3>
+                        <a href="meeting.html" class="view-all-link">View All</a>
+                    </div>
+                    <div class="sessions-list">
+                        <div class="session-item">
+                            <div class="session-time">
+                                <span class="time">2:00 PM</span>
+                                <span class="date">Today</span>
+                            </div>
+                            <div class="session-details">
+                                <span class="therapist-name">Dr. Sarah Johnson</span>
+                                <span class="session-type">Individual Therapy</span>
+                            </div>
+                            <button class="join-session-btn" onclick="window.location.href='meeting.html'">Join</button>
+                        </div>
+                        <div class="session-item">
+                            <div class="session-time">
+                                <span class="time">10:00 AM</span>
+                                <span class="date">Tomorrow</span>
+                            </div>
+                            <div class="session-details">
+                                <span class="therapist-name">Dr. Michael Chen</span>
+                                <span class="session-type">Follow-up Session</span>
+                            </div>
+                            <button class="schedule-btn">Reschedule</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Smart Recommendations Card -->
+                <div class="dashboard-card recommendations-card">
+                    <div class="card-header">
+                        <h3>Personalized Recommendations</h3>
+                        <span class="ai-badge">AI Powered</span>
+                    </div>
+                    <div class="recommendations-list">
+                        <div class="recommendation-item">
+                            <div class="recommendation-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M9 11H1v3h8v3l8-5-8-5v3z"></path>
+                                </svg>
+                            </div>
+                            <div class="recommendation-content">
+                                <h4>Breathing Exercise</h4>
+                                <p>5-minute guided breathing to reduce anxiety</p>
+                            </div>
+                            <button class="try-btn" onclick="startBreathingExercise()">Try Now</button>
+                        </div>
+                        <div class="recommendation-item">
+                            <div class="recommendation-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M14 9V5a3 3 0 0 0-6 0v4"></path>
+                                    <rect x="2" y="9" width="20" height="12" rx="2" ry="2"></rect>
+                                </svg>
+                            </div>
+                            <div class="recommendation-content">
+                                <h4>Mindfulness Article</h4>
+                                <p>"Managing Work Stress: 7 Proven Techniques"</p>
+                            </div>
+                            <button class="read-btn">Read</button>
+                        </div>
+                        <div class="recommendation-item">
+                            <div class="recommendation-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                            </div>
+                            <div class="recommendation-content">
+                                <h4>Goal Setting Workshop</h4>
+                                <p>Interactive session on setting achievable goals</p>
+                            </div>
+                            <button class="join-btn">Join</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Progress Roadmap Preview -->
+                <div class="dashboard-card roadmap-preview-card">
+                    <div class="card-header">
+                        <h3>Your Progress Journey</h3>
+                        <a href="roadmap.html" class="view-full-link">View Full Roadmap</a>
+                    </div>
+                    <div class="roadmap-preview">
+                        <div class="milestone completed">
+                            <div class="milestone-icon">✓</div>
+                            <span>Initial Assessment</span>
+                        </div>
+                        <div class="milestone completed">
+                            <div class="milestone-icon">✓</div>
+                            <span>First Therapy Session</span>
+                        </div>
+                        <div class="milestone current">
+                            <div class="milestone-icon">●</div>
+                            <span>Anxiety Management</span>
+                        </div>
+                        <div class="milestone upcoming">
+                            <div class="milestone-icon">○</div>
+                            <span>Stress Reduction Goals</span>
+                        </div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 68%"></div>
+                    </div>
+                    <span class="progress-text">68% Complete</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Quick Mood Check Modal -->
+    <div class="modal-overlay" id="moodCheckModal">
+        <div class="modal-content mood-check-modal">
+            <div class="modal-header">
+                <h3>Quick Mood Check</h3>
+                <button class="modal-close" onclick="closeMoodCheck()">×</button>
+            </div>
+            <div class="modal-body">
+                <p>How are you feeling right now?</p>
+                <div class="mood-options">
+                    <button class="mood-option" data-mood="excellent" onclick="selectMood('excellent')">
+                        <span class="mood-emoji">😊</span>
+                        <span>Excellent</span>
+                    </button>
+                    <button class="mood-option" data-mood="good" onclick="selectMood('good')">
+                        <span class="mood-emoji">🙂</span>
+                        <span>Good</span>
+                    </button>
+                    <button class="mood-option" data-mood="okay" onclick="selectMood('okay')">
+                        <span class="mood-emoji">😐</span>
+                        <span>Okay</span>
+                    </button>
+                    <button class="mood-option" data-mood="low" onclick="selectMood('low')">
+                        <span class="mood-emoji">😔</span>
+                        <span>Low</span>
+                    </button>
+                    <button class="mood-option" data-mood="struggling" onclick="selectMood('struggling')">
+                        <span class="mood-emoji">😢</span>
+                        <span>Struggling</span>
+                    </button>
+                </div>
+                <div class="mood-note">
+                    <label for="moodNote">Any specific thoughts or feelings? (Optional)</label>
+                    <textarea id="moodNote" placeholder="What's on your mind?"></textarea>
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button class="modal-btn secondary" onclick="closeMoodCheck()">Skip</button>
+                <button class="modal-btn primary" onclick="saveMoodCheck()">Save Check-in</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Breathing Exercise Modal -->
+    <div class="modal-overlay" id="breathingModal">
+        <div class="modal-content breathing-modal">
+            <div class="modal-header">
+                <h3>Guided Breathing Exercise</h3>
+                <button class="modal-close" onclick="closeBreathingExercise()">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="breathing-circle" id="breathingCircle">
+                    <div class="breathing-text" id="breathingText">Get Ready</div>
+                </div>
+                <div class="breathing-controls">
+                    <button class="breathing-btn" id="startBreathingBtn" onclick="startBreathing()">Start</button>
+                    <button class="breathing-btn" id="stopBreathingBtn" onclick="stopBreathing()" style="display: none;">Stop</button>
+                </div>
+                <div class="breathing-progress">
+                    <span>Session: <span id="breathingTimer">0:00</span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+</html>

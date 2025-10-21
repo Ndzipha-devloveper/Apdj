@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mood Tracker - CounselCare</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <span class="logo">CounselCare</span>
+            </div>
+            <div class="nav-links">
+                <a href="dashboard.html" class="nav-link">DASHBOARD</a>
+                <a href="ai-companion.html" class="nav-link">AI COMPANION</a>
+                <a href="mood-tracker.html" class="nav-link active">MOOD TRACKER</a>
+                <a href="roadmap.html" class="nav-link">MY ROADMAP</a>
+                <a href="meeting.html" class="nav-link">SESSIONS</a>
+                <div class="user-menu">
+                    <button class="user-avatar" onclick="toggleUserMenu()">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Mood Tracker Main Content -->
+    <main class="mood-tracker-main">
+        <div class="container">
+            <!-- Header Section -->
+            <section class="mood-tracker-header">
+                <div class="header-content">
+                    <h1>Mood & Emotion Tracker</h1>
+                    <p>Track your emotions, identify patterns, and gain insights into your mental health journey</p>
+                </div>
+                <div class="streak-info">
+                    <div class="streak-item">
+                        <span class="streak-number">7</span>
+                        <span class="streak-label">Day Streak</span>
+                    </div>
+                    <div class="streak-item">
+                        <span class="streak-number">42</span>
+                        <span class="streak-label">Total Entries</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Today's Mood Entry -->
+            <section class="todays-entry-section">
+                <div class="entry-card">
+                    <div class="card-header">
+                        <h3>How are you feeling today?</h3>
+                        <span class="date-display" id="todayDate"></span>
+                    </div>
+                    <div class="mood-selector">
+                        <div class="mood-options">
+                            <button class="mood-option" data-mood="5" onclick="selectMood(5)">
+                                <span class="mood-emoji">😊</span>
+                                <span class="mood-label">Excellent</span>
+                            </button>
+                            <button class="mood-option" data-mood="4" onclick="selectMood(4)">
+                                <span class="mood-emoji">🙂</span>
+                                <span class="mood-label">Good</span>
+                            </button>
+                            <button class="mood-option" data-mood="3" onclick="selectMood(3)">
+                                <span class="mood-emoji">😐</span>
+                                <span class="mood-label">Okay</span>
+                            </button>
+                            <button class="mood-option" data-mood="2" onclick="selectMood(2)">
+                                <span class="mood-emoji">😔</span>
+                                <span class="mood-label">Low</span>
+                            </button>
+                            <button class="mood-option" data-mood="1" onclick="selectMood(1)">
+                                <span class="mood-emoji">😢</span>
+                                <span class="mood-label">Struggling</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Emotion Tags -->
+                    <div class="emotion-tags-section" id="emotionTagsSection" style="display: none;">
+                        <h4>What emotions are you experiencing?</h4>
+                        <div class="emotion-tags">
+                            <button class="emotion-tag" data-emotion="anxious" onclick="toggleEmotion('anxious')">Anxious</button>
+                            <button class="emotion-tag" data-emotion="stressed" onclick="toggleEmotion('stressed')">Stressed</button>
+                            <button class="emotion-tag" data-emotion="happy" onclick="toggleEmotion('happy')">Happy</button>
+                            <button class="emotion-tag" data-emotion="sad" onclick="toggleEmotion('sad')">Sad</button>
+                            <button class="emotion-tag" data-emotion="angry" onclick="toggleEmotion('angry')">Angry</button>
+                            <button class="emotion-tag" data-emotion="excited" onclick="toggleEmotion('excited')">Excited</button>
+                            <button class="emotion-tag" data-emotion="overwhelmed" onclick="toggleEmotion('overwhelmed')">Overwhelmed</button>
+                            <button class="emotion-tag" data-emotion="peaceful" onclick="toggleEmotion('peaceful')">Peaceful</button>
+                            <button class="emotion-tag" data-emotion="frustrated" onclick="toggleEmotion('frustrated')">Frustrated</button>
+                            <button class="emotion-tag" data-emotion="grateful" onclick="toggleEmotion('grateful')">Grateful</button>
+                            <button class="emotion-tag" data-emotion="lonely" onclick="toggleEmotion('lonely')">Lonely</button>
+                            <button class="emotion-tag" data-emotion="confident" onclick="toggleEmotion('confident')">Confident</button>
+                        </div>
+                    </div>
+
+                    <!-- Journal Entry -->
+                    <div class="journal-section" id="journalSection" style="display: none;">
+                        <h4>What's on your mind? (Optional)</h4>
+                        <textarea 
+                            id="journalEntry" 
+                            placeholder="Describe your thoughts, feelings, or what happened today..."
+                            rows="4"
+                        ></textarea>
+                        <div class="journal-prompts">
+                            <span>Need inspiration?</span>
+                            <button class="prompt-btn" onclick="usePrompt('What made me feel this way today?')">What made me feel this way?</button>
+                            <button class="prompt-btn" onclick="usePrompt('What am I grateful for today?')">What am I grateful for?</button>
+                            <button class="prompt-btn" onclick="usePrompt('What would help me feel better?')">What would help me feel better?</button>
+                        </div>
+                    </div>
+
+                    <!-- Triggers and Factors -->
+                    <div class="factors-section" id="factorsSection" style="display: none;">
+                        <h4>What might have influenced your mood?</h4>
+                        <div class="factors-grid">
+                            <div class="factor-category">
+                                <h5>Activities</h5>
+                                <div class="factor-options">
+                                    <button class="factor-tag" data-factor="work" onclick="toggleFactor('work')">Work</button>
+                                    <button class="factor-tag" data-factor="exercise" onclick="toggleFactor('exercise')">Exercise</button>
+                                    <button class="factor-tag" data-factor="socializing" onclick="toggleFactor('socializing')">Socializing</button>
+                                    <button class="factor-tag" data-factor="relaxation" onclick="toggleFactor('relaxation')">Relaxation</button>
+                                </div>
+                            </div>
+                            <div class="factor-category">
+                                <h5>Physical</h5>
+                                <div class="factor-options">
+                                    <button class="factor-tag" data-factor="sleep" onclick="toggleFactor('sleep')">Sleep Quality</button>
+                                    <button class="factor-tag" data-factor="nutrition" onclick="toggleFactor('nutrition')">Nutrition</button>
+                                    <button class="factor-tag" data-factor="weather" onclick="toggleFactor('weather')">Weather</button>
+                                    <button class="factor-tag" data-factor="health" onclick="toggleFactor('health')">Health</button>
+                                </div>
+                            </div>
+                            <div class="factor-category">
+                                <h5>Social</h5>
+                                <div class="factor-options">
+                                    <button class="factor-tag" data-factor="family" onclick="toggleFactor('family')">Family</button>
+                                    <button class="factor-tag" data-factor="friends" onclick="toggleFactor('friends')">Friends</button>
+                                    <button class="factor-tag" data-factor="relationships" onclick="toggleFactor('relationships')">Relationships</button>
+                                    <button class="factor-tag" data-factor="conflict" onclick="toggleFactor('conflict')">Conflict</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Save Button -->
+                    <div class="entry-actions" id="entryActions" style="display: none;">
+                        <button class="save-entry-btn" onclick="saveMoodEntry()">Save Today's Entry</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Mood Analytics -->
+            <section class="mood-analytics-section">
+                <div class="analytics-grid">
+                    <!-- Mood Chart -->
+                    <div class="analytics-card chart-card">
+                        <div class="card-header">
+                            <h3>Mood Trends</h3>
+                            <select class="time-filter" onchange="updateMoodChart(this.value)">
+                                <option value="week">Past Week</option>
+                                <option value="month">Past Month</option>
+                                <option value="quarter">Past 3 Months</option>
+                            </select>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="moodTrendChart" width="400" height="200"></canvas>
+                        </div>
+                        <div class="chart-insights">
+                            <div class="insight-item positive">
+                                <span class="insight-icon">📈</span>
+                                <span>Mood trending upward this week</span>
+                            </div>
+                            <div class="insight-item">
+                                <span class="insight-icon">📊</span>
+                                <span>Average mood: 3.8/5 (Good)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Emotion Patterns -->
+                    <div class="analytics-card patterns-card">
+                        <div class="card-header">
+                            <h3>Emotion Patterns</h3>
+                        </div>
+                        <div class="patterns-list">
+                            <div class="pattern-item">
+                                <div class="pattern-emotion">😊 Happy</div>
+                                <div class="pattern-frequency">
+                                    <div class="frequency-bar">
+                                        <div class="frequency-fill" style="width: 75%"></div>
+                                    </div>
+                                    <span>75%</span>
+                                </div>
+                            </div>
+                            <div class="pattern-item">
+                                <div class="pattern-emotion">😔 Anxious</div>
+                                <div class="pattern-frequency">
+                                    <div class="frequency-bar">
+                                        <div class="frequency-fill" style="width: 45%"></div>
+                                    </div>
+                                    <span>45%</span>
+                                </div>
+                            </div>
+                            <div class="pattern-item">
+                                <div class="pattern-emotion">😤 Stressed</div>
+                                <div class="pattern-frequency">
+                                    <div class="frequency-bar">
+                                        <div class="frequency-fill" style="width: 35%"></div>
+                                    </div>
+                                    <span>35%</span>
+                                </div>
+                            </div>
+                            <div class="pattern-item">
+                                <div class="pattern-emotion">😌 Peaceful</div>
+                                <div class="pattern-frequency">
+                                    <div class="frequency-bar">
+                                        <div class="frequency-fill" style="width: 60%"></div>
+                                    </div>
+                                    <span>60%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- AI Insights -->
+                    <div class="analytics-card insights-card">
+                        <div class="card-header">
+                            <h3>AI Insights</h3>
+                            <span class="ai-badge">AI Powered</span>
+                        </div>
+                        <div class="insights-list">
+                            <div class="insight-item">
+                                <div class="insight-icon">🔍</div>
+                                <div class="insight-content">
+                                    <h4>Pattern Detected</h4>
+                                    <p>You tend to feel more anxious on Sunday evenings. Consider preparing for the week ahead on Saturday.</p>
+                                </div>
+                            </div>
+                            <div class="insight-item">
+                                <div class="insight-icon">💡</div>
+                                <div class="insight-content">
+                                    <h4>Positive Correlation</h4>
+                                    <p>Your mood improves significantly after exercise. Try to maintain your workout routine.</p>
+                                </div>
+                            </div>
+                            <div class="insight-item">
+                                <div class="insight-icon">⚠️</div>
+                                <div class="insight-content">
+                                    <h4>Trigger Alert</h4>
+                                    <p>Work-related stress appears to be a consistent trigger. Consider discussing coping strategies with your therapist.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Recent Entries -->
+            <section class="recent-entries-section">
+                <div class="section-header">
+                    <h3>Recent Entries</h3>
+                    <button class="view-all-btn" onclick="viewAllEntries()">View All</button>
+                </div>
+                <div class="entries-list">
+                    <div class="entry-item">
+                        <div class="entry-date">
+                            <span class="day">Yesterday</span>
+                            <span class="date">Dec 14</span>
+                        </div>
+                        <div class="entry-mood">
+                            <span class="mood-emoji">🙂</span>
+                            <span class="mood-label">Good</span>
+                        </div>
+                        <div class="entry-emotions">
+                            <span class="emotion-tag small">Happy</span>
+                            <span class="emotion-tag small">Grateful</span>
+                        </div>
+                        <div class="entry-preview">
+                            <p>Had a great therapy session today. Feeling more optimistic about managing my anxiety...</p>
+                        </div>
+                        <button class="view-entry-btn" onclick="viewEntry('yesterday')">View</button>
+                    </div>
+                    
+                    <div class="entry-item">
+                        <div class="entry-date">
+                            <span class="day">Dec 13</span>
+                            <span class="date">2 days ago</span>
+                        </div>
+                        <div class="entry-mood">
+                            <span class="mood-emoji">😐</span>
+                            <span class="mood-label">Okay</span>
+                        </div>
+                        <div class="entry-emotions">
+                            <span class="emotion-tag small">Stressed</span>
+                            <span class="emotion-tag small">Overwhelmed</span>
+                        </div>
+                        <div class="entry-preview">
+                            <p>Work deadline approaching. Using breathing exercises to stay calm...</p>
+                        </div>
+                        <button class="view-entry-btn" onclick="viewEntry('dec13')">View</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Entry Detail Modal -->
+    <div class="modal-overlay" id="entryDetailModal">
+        <div class="modal-content entry-detail-modal">
+            <div class="modal-header">
+                <h3>Mood Entry Details</h3>
+                <button class="modal-close" onclick="closeEntryDetail()">×</button>
+            </div>
+            <div class="modal-body" id="entryDetailContent">
+                <!-- Entry details will be populated here -->
+            </div>
+            <div class="modal-actions">
+                <button class="modal-btn secondary" onclick="closeEntryDetail()">Close</button>
+                <button class="modal-btn primary" onclick="editEntry()">Edit Entry</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="mood-tracker.js"></script>
+</body>
+</html>
