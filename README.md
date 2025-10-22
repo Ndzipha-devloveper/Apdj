@@ -98,7 +98,7 @@ Our group consists of **10 dedicated members**, each playing a vital role in bui
 
 - A few members take charge of **testing and quality assurance**, manually checking the site across browsers, validating HTML/CSS, and running accessibility audits using tools like Lighthouse.
 
-- Our **deployment and DevOps team** configures GitHub Pages, sets up HTTPS, and prepares the backend for cloud deployment on platforms like Render or Railway.
+- Our **deployment** configures GitHub Pages
 
 - One teammate handles **documentation**, writing this README, setup guides, and future roadmap to ensure the project is easy to maintain and scale.
 
