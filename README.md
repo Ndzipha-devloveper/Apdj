@@ -138,4 +138,4 @@ Together, we build a platform that’s not just functional, but meaningful. Ever
 ## 🙏 **Acknowledgments**
 
 We build this project with *empathy*, *teamwork*, and *intention*.
- Special Thanks to Yongama_wethinkcode for his valuable contribution to our project significantly enhancing the functionality and performance of our website
+ Special Thanks to @Yongama_wtc for his valuable contribution to our project significantly enhancing the functionality and performance of our website
