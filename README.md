@@ -25,8 +25,9 @@ Traditional counseling often comes with barriers. Our platform helps solve these
 
 Every section of the site—from the *mission statement* to the *contact form*—is built with **empathy**, **clarity**, and **professional polish**. We want users to feel *seen*, *supported*, and *safe*.
 
-🌐 Live Site
-https://ndzipha-devloveper.github.io/Online-Counseling/
+🌐 Live Site 
+https://ndzipha-devloveper.github.io/Apdj/
+
 
 ## 🛠️ **Tech Stack**
 
@@ -137,3 +138,4 @@ Together, we build a platform that’s not just functional, but meaningful. Ever
 ## 🙏 **Acknowledgments**
 
 We build this project with *empathy*, *teamwork*, and *intention*.
+ Special Thanks to Yongama_wethinkcode for his valuable contribution to our project significantly enhancing the functionality and performance of our website
