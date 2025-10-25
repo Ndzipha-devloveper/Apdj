@@ -236,7 +236,7 @@ body {
    ========================================== */
 
 .hero {
-  background: url('images/ema.jpg') center/cover no-repeat;
+  background: url('images/ema.jpg') center center / cover no-repeat;
   min-height: 80vh;
   display: flex;
   align-items: center;
