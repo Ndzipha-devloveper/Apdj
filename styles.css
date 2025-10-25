@@ -241,7 +241,6 @@ body {
         rgba(139, 92, 246, 0.9) 0%,
         rgba(167, 139, 250, 0.8) 100%
     ),
-    url('https://images.pexels.com/photos/1738986/pexels-photo-1738986.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop') center/cover;
     min-height: 80vh;
     display: flex;
     align-items: center;
