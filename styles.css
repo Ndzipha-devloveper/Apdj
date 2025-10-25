@@ -236,39 +236,40 @@ body {
    ========================================== */
 
 .hero {
-    background: linear-gradient(
-        135deg,
-        rgba(139, 92, 246, 0.9) 0%,
-        rgba(167, 139, 250, 0.8) 100%
-    ),
-    url('images/ema.jpg') center/cover;
-    min-height: 80vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: var(--white);
-    position: relative;
+  background: linear-gradient(
+    135deg,
+    rgba(139, 92, 246, 0.4) 0%,  /* softer overlay */
+    rgba(167, 139, 250, 0.3) 100%
+  ),
+  url('images/ema.jpg') center/cover;
+  min-height: 100vh; /* full screen height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--white);
+  position: relative;
 }
 
 .hero-content {
-    max-width: 800px;
-    padding: var(--space-8);
+  max-width: 800px;
+  padding: var(--space-8);
 }
 
 .hero-title {
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    font-weight: var(--font-weight-bold);
-    margin-bottom: var(--space-6);
-    line-height: 1.2;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--space-6);
+  line-height: 1.2;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* makes text pop */
 }
 
 .hero-subtitle {
-    font-size: clamp(1.125rem, 2vw, 1.5rem);
-    margin-bottom: var(--space-8);
-    opacity: 0.95;
-    line-height: 1.5;
-}
+  font-size: clamp(1.125rem, 2vw, 1.5rem);
+  margin-bottom: var(--space-8);
+  opacity: 0.95;
+  line-height: 1.5;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* makes text pop */
 
 /* Call-to-Action Button */
 .cta-button {
