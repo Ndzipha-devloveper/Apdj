@@ -241,6 +241,7 @@ body {
         rgba(139, 92, 246, 0.9) 0%,
         rgba(167, 139, 250, 0.8) 100%
     ),
+   url('images/deposit.jpg') center/cover;
     min-height: 80vh;
     display: flex;
     align-items: center;
