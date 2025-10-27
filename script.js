@@ -1,57 +1,151 @@
+/ ======================================================================
+// DATABASE DATA LOADING 
 // ======================================================================
-// DATABASE DATA LOADING  - INSERTED HERE
-// ======================================================================
 
-// Define variables to hold the loaded data globally
-let clientsData = [];
-let counselorsData = [];
-let sessionsData = [];
-let usersData = [];
+class TextFileDatabase {
+    constructor() {
+        this.data = {};
+        this.basePath = './data/';
+    }
 
-// Function to load all JSON data files asynchronously
-async function loadData() {
-    try {
-        // Fetch all four files concurrently from the 'Data' folder
-        const [clientsResponse, counselorsResponse, sessionsResponse, usersResponse] = await Promise.all([
-            fetch('Data/clients.json'),     
-            fetch('Data/counselors.json'),  
-            fetch('Data/session.json'),     
-            fetch('Data/users.json')
-        ]);
+    async loadAllData() {
+        try {
+            const files = [
+                { name: 'users', file: 'users.json' },
+                { name: 'clients', file: 'clients.json' },
+                { name: 'counselors', file: 'counselors.json' },
+                { name: 'sessions', file: 'sessions.json' }
+            ];
+            
+            const loadPromises = files.map(async ({ name, file }) => {
+                try {
+                    const response = await fetch(${this.basePath}${file});
+                    if (!response.ok) {
+                        console.warn(⚠ Could not load ${file}, using empty data);
+                        this.data[name] = [];
+                        return;
+                    }
+                    this.data[name] = await response.json();
+                    console.log(✅ Loaded ${name}:, this.data[name].length, 'records');
+                } catch (error) {
+                    console.warn(⚠ Error loading ${file}:, error);
+                    this.data[name] = [];
+                }
+            });
+            
+            await Promise.all(loadPromises);
+            console.log('📊 Database initialization complete');
+            return this.data;
+            
+        } catch (error) {
+            console.error('❌ Database loading failed:', error);
+            this.data = { users: [], clients: [], counselors: [], sessions: [] };
+            return this.data;
+        }
+    }
 
-        const checkResponse = (response) => {
-            if (!response.ok) {
-                // Throws an error if the file isn't found (404) or fails to load
-                throw new Error(Failed to fetch ${response.url}. Status: ${response.status});
-            }
-            return response.json();
-        };
+    findUserByEmail(email) {
+        return this.data.users.find(user => user.email === email);
+    }
 
-        // Parse all JSON responses and assign to global variables
-        clientsData = await checkResponse(clientsResponse);
-        counselorsData = await checkResponse(counselorsResponse);
-        sessionsData = await checkResponse(sessionsResponse);
-        usersData = await checkResponse(usersResponse);
+    findCounselorsBySpecialty(specialty) {
+        return this.data.counselors.filter(counselor => 
+            counselor.specialty === specialty
+        );
+    }
 
-        console.log('✅ DATABASE LOADED. Application data is now available.');
-        
-        // *******************************************************************
-        // OPTIONAL INTEGRATION: If your existing code has a setup function,
-        // you would call it here to ensure it runs ONLY after the data loads.
-        // Example: initializeApplication(usersData); 
-        // *******************************************************************
-
-    } catch (error) {
-        console.error('❌ FATAL ERROR: Database files could not be loaded.', error);
+    getClientSessions(clientId) {
+        return this.data.sessions.filter(session => session.clientId === clientId);
     }
 }
 
-// Start the data loading process immediately
-loadData();
-
+// Initialize database globally (PUT THIS RIGHT AFTER THE CLASS)
+const db = new TextFileDatabase();
 
 // ======================================================================
-// END OF DATABASE DATA LOADING SECTION
+// AUTHENTICATION SYSTEM 
+// ======================================================================
+
+const AuthSystem = {
+    async login(email, password) {
+        const user = db.findUserByEmail(email);
+        
+        if (user && user.password === password) {
+            localStorage.setItem('currentUser', JSON.stringify(user));
+            showNotification(Welcome back, ${user.username}!, 'success');
+            return { success: true, user };
+        }
+        showNotification('Invalid email or password', 'error');
+        return { success: false, error: 'Invalid credentials' };
+    },
+
+    logout() {
+        localStorage.removeItem('currentUser');
+        showNotification('Logged out successfully', 'info');
+        updateUI();
+    },
+
+    getCurrentUser() {
+        const user = localStorage.getItem('currentUser');
+        return user ? JSON.parse(user) : null;
+    },
+
+    isLoggedIn() {
+        return this.getCurrentUser() !== null;
+    }
+};
+
+// ======================================================================
+// DATA MANAGER 
+// ======================================================================
+
+const DataManager = {
+    addUser(newUser) {
+        const users = [...db.data.users];
+        const newId = users.length > 0 ? Math.max(...users.map(u => u.id)) + 1 : 1;
+        
+        const userToAdd = {
+            ...newUser,
+            id: newId,
+            createdAt: new Date().toISOString()
+        };
+        
+        users.push(userToAdd);
+        db.data.users = users;
+        this.saveToLocalStorage('users', users);
+        showNotification('Account created successfully!', 'success');
+        return userToAdd;
+    },
+
+    updateUserProfile(userId, updates) {
+        const users = db.data.users.map(user => 
+            user.id === userId ? { ...user, ...updates } : user
+        );
+        db.data.users = users;
+        this.saveToLocalStorage('users', users);
+        showNotification('Profile updated!', 'success');
+    },
+
+    saveToLocalStorage(key, data) {
+        localStorage.setItem(db_${key}, JSON.stringify(data));
+    },
+
+    loadFromLocalStorage(key) {
+        const stored = localStorage.getItem(db_${key});
+        return stored ? JSON.parse(stored) : null;
+    }
+};
+
+// ======================================================================
+// INITIALIZATION FUNCTION 
+// ======================================================================
+
+async function initializeDatabase() {
+    console.log('🚀 Initializing Database...');
+    await db.loadAllData();
+    console.log('✅ Database ready for use');
+}
+
 // ======================================================================
 /**
  * ONLINE COUNSELING WEBSITE - JAVASCRIPT
