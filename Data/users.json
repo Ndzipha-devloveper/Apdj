@@ -1,0 +1,14 @@
+id: 1
+username: JohnsonP
+password: Peter01
+role: client
+
+id: 2
+username: John Doe
+password: Johnathen1
+role: counselor
+
+id: 3
+username: Sarah
+password: pass456
+role: client
