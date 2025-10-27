@@ -1,19 +1,19 @@
 [
   {
 "id": 1,
-"username": "JohnsonP",
+"username": "JohnsonP@gmail.com",
 "password": "Peter01",
 "role": "client"
   },
   {
 "id": "2",
-"username": "John Doe",
+"username": "john@Sential-link.com",
 "password": "Johnathen1",
 "role": "counselor"
   },
   {
 "id": 3
-"username": "Sarah",
+"username": "Sarah@gmail.com",
 "password": "pass456",
 "role": "client"
   }
