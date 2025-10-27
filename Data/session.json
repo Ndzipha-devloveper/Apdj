@@ -1,26 +1,30 @@
-ID: 1
-Name: Peter Johnson
-Age: 19
-Counselor:John Doe
-Session Date: 2025-10-25
-Session time:14:00
-Notes:Teen counselor
-duration :1.5 hours
-
-ID: 2
-Name: Mike Jones
-Age: 24
-Counselor:John Doe
-Session Date: 2025-10-22
-Session time:12:00
-Notes:Teen counselor
-duration :2 hours
-
-ID: 3
-Name: Sarah Hendricks
-Age: 27
-Counselor:Jane Smith
-Session Date: 2025-10-29
-Session time:14:00
-Notes:Anxiety and stress
-duration :2 hours
+[
+  {
+"ID": 1,
+"Name": "Peter Johnson",
+"Age": 19,
+"Counselor":"John Doe",
+"Session Date": "2025-10-25",
+"Session time":"14:00",
+"Notes":"Teen counselor",
+"duration" :"1.5 hours"
+  },
+  {
+"ID": 2,
+"Name": "Mike Jones",
+"Age": 24,
+"Counselor":"John Doe",
+"Session Date": 2025-10-22",
+"Session time":12:00",
+"Notes":"Teen counselor",
+"duration" :"2 hours"
+  }
+  {
+"ID": 3,
+"Name": "Sarah Hendricks",
+"Age": 27,
+"Counselor":"Jane Smith",
+"Session Date": 2025-10-29",
+"Session time":"14:00",
+"Notes":"Anxiety and stress",
+"duration" :"2 hours"
