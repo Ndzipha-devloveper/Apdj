@@ -1,0 +1,10 @@
+/Sential-link/
+│
+├── index.html
+├── script.js
+├── style.css
+│
+└── data/
+    ├── counselors.txt
+    ├── clients.txt
+    └── sessions.txt
