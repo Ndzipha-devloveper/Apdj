@@ -2,10 +2,12 @@ ID: 1
 Name: Peter Johnson
 Age: 19
 Session Date: 2025-10-25
+
 ID: 2
 Name: MIke jones
 Age: 24
 Session Date: 2025-10-22
+
 ID: 3
 Name: Sarah Hendricks
 Age: 27
