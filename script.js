@@ -1,3 +1,58 @@
+// ======================================================================
+// DATABASE DATA LOADING  - INSERTED HERE
+// ======================================================================
+
+// Define variables to hold the loaded data globally
+let clientsData = [];
+let counselorsData = [];
+let sessionsData = [];
+let usersData = [];
+
+// Function to load all JSON data files asynchronously
+async function loadData() {
+    try {
+        // Fetch all four files concurrently from the 'Data' folder
+        const [clientsResponse, counselorsResponse, sessionsResponse, usersResponse] = await Promise.all([
+            fetch('Data/clients.json'),     
+            fetch('Data/counselors.json'),  
+            fetch('Data/session.json'),     
+            fetch('Data/users.json')
+        ]);
+
+        const checkResponse = (response) => {
+            if (!response.ok) {
+                // Throws an error if the file isn't found (404) or fails to load
+                throw new Error(Failed to fetch ${response.url}. Status: ${response.status});
+            }
+            return response.json();
+        };
+
+        // Parse all JSON responses and assign to global variables
+        clientsData = await checkResponse(clientsResponse);
+        counselorsData = await checkResponse(counselorsResponse);
+        sessionsData = await checkResponse(sessionsResponse);
+        usersData = await checkResponse(usersResponse);
+
+        console.log('✅ DATABASE LOADED. Application data is now available.');
+        
+        // *******************************************************************
+        // OPTIONAL INTEGRATION: If your existing code has a setup function,
+        // you would call it here to ensure it runs ONLY after the data loads.
+        // Example: initializeApplication(usersData); 
+        // *******************************************************************
+
+    } catch (error) {
+        console.error('❌ FATAL ERROR: Database files could not be loaded.', error);
+    }
+}
+
+// Start the data loading process immediately
+loadData();
+
+
+// ======================================================================
+// END OF DATABASE DATA LOADING SECTION
+// ======================================================================
 /**
  * ONLINE COUNSELING WEBSITE - JAVASCRIPT
  * 
