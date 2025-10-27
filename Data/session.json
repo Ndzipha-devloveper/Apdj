@@ -14,8 +14,8 @@
 "Name": "Mike Jones",
 "Age": 24,
 "Counselor":"John Doe",
-"Session Date": 2025-10-22,
-"Session time":12:00,
+"Session Date": "2025-10-22",
+"Session time":"12:00",
 "Notes":"Teen counselor",
 "duration" :"2 hours"
   }
